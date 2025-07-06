@@ -11,7 +11,7 @@
 
 ## 📹 [Watch the Full Demo & Setup Video 
 ## 📹 Watch the Full Demo & Setup Video (https://drive.google.com/file/d/1f7QCfv78kirarrqcdw6QlEjBUvu3Lt_O/view?usp=drive_link)
-- [Alternate  for 2x (3 min) Link (Google Drive)](Google Drive)](https://drive.google.com/file/d/1Gpd4uobP885iZolYPyujoKr7lo2Hk7-Y/view?usp=drive_link)
+- [Alternate  for (6 min) Link (Google Drive)](Google Drive)](https://drive.google.com/file/d/1Gpd4uobP885iZolYPyujoKr7lo2Hk7-Y/view?usp=drive_link)
 
 ---  
 
