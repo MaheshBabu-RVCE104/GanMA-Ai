@@ -9,7 +9,9 @@
 
 ---
 
-## 📹 [Watch the Full Demo & Setup Video](#) <!-- TODO: Replace # with your Google Drive/YouTube video link -->
+## 📹 [Watch the Full Demo & Setup Video (Google Drive)](https://drive.google.com/file/d/1Gpd4uobP885iZolYPyujoKr7lo2Hk7-Y/view?usp=drive_link)
+
+---
 
 ---
 
