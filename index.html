@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GanMa-Ai Agent solution for multiple tasks</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: white;
+      --text: black;
+      --muted: #555;
+      --accent: black;
+      --inverse-bg: black;
+      --inverse-text: white;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: black;
+        --text: white;
+        --muted: #ccc;
+        --accent: white;
+        --inverse-bg: white;
+        --inverse-text: black;
+      }
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    header {
+      padding: 24px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    nav a {
+      margin: 0 16px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .btns a {
+      padding: 10px 20px;
+      margin-left: 10px;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .start-btn {
+      background: none;
+      color: var(--text);
+      border: 1px solid var(--text);
+    }
+
+    .get-started {
+      background-color: var(--text);
+      color: var(--bg);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 80px 30px;
+    }
+
+    .hero h1 {
+      font-size: 36px;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .hero p {
+      margin-top: 20px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .cta-buttons {
+      margin-top: 30px;
+    }
+
+    .cta-buttons a {
+      display: inline-block;
+      margin: 0 10px;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 600;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    /* Extension download button */
+    .trial-btn {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    .trial-btn::before {
+      content: '🔗';
+      margin-right: 8px;
+    }
+
+    /* .exe download button */
+    .start-btn-purple {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      color: white;
+      border: none;
+      box-shadow: 0 4px 15px rgba(240, 147, 251, 0.4);
+    }
+
+    .start-btn-purple::before {
+      content: '💻';
+      margin-right: 8px;
+    }
+
+    .trial-btn:hover, .start-btn-purple:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .screenshot, .features-img, .analytics-img {
+      margin-top: 50px;
+      text-align: center;
+    }
+
+    .screenshot img,
+    .features-img img,
+    .analytics-img img {
+      max-width: 85%;
+      border-radius: 16px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .logos {
+      margin-top: 60px;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .logos img {
+      height: 32px;
+    }
+
+    .section {
+      padding: 80px 40px;
+      text-align: center;
+    }
+
+    .section h2 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 40px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 32px;
+      margin-top: 40px;
+    }
+
+    .feature {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 24px;
+      border-radius: 12px;
+      color: white;
+      text-align: left;
+      transition: transform 0.3s ease;
+    }
+
+    .feature:hover {
+      transform: translateY(-5px);
+    }
+
+    .feature h3 {
+      margin-bottom: 12px;
+      font-size: 18px;
+      color: white;
+    }
+
+    .feature p {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    footer {
+      background-color: #101010;
+      color: #888;
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 14px;
+      margin-top: 80px;
+    }
+
+    /* Enhanced Modal Styles */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(5px);
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-card {
+      background: var(--bg);
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+      max-width: 600px;
+      width: 90%;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+      transform: translateY(-30px) scale(0.95);
+      transition: all 0.3s ease;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+    }
+
+    .modal-overlay.active .modal-card {
+      transform: translateY(0) scale(1);
+    }
+
+    .modal-card h2 {
+      font-size: 28px;
+      margin-bottom: 10px;
+      color: var(--text);
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .modal-card p {
+      color: var(--muted);
+      margin-bottom: 20px;
+      font-size: 16px;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      background: none;
+      border: none;
+      font-size: 28px;
+      cursor: pointer;
+      color: var(--muted);
+      transition: all 0.3s ease;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .close-btn:hover {
+      color: var(--text);
+      background: rgba(102, 126, 234, 0.1);
+    }
+
+    .google-signin-wrapper {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    /* Enhanced Installation Instructions */
+    .install-steps {
+      text-align: left;
+      margin: 25px 0;
+      background: linear-gradient(135deg, #f8f9ff 0%, #f0f2ff 100%);
+      padding: 25px;
+      border-radius: 15px;
+      border: 2px solid #e0e7ff;
+    }
+
+    .install-steps h3 {
+      color: var(--text);
+      margin-bottom: 15px;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    .step-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 15px;
+      padding: 15px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(102, 126, 234, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .step-item:hover {
+      transform: translateX(5px);
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+    }
+
+    .step-number {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 14px;
+      margin-right: 15px;
+      flex-shrink: 0;
+    }
+
+    .step-content {
+      flex: 1;
+    }
+
+    .step-content h4 {
+      color: var(--text);
+      margin-bottom: 5px;
+      font-size: 16px;
+    }
+
+    .step-content p {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 0;
+    }
+
+    .code-snippet {
+      background: #f1f3f4;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      color: #d73027;
+      border: 1px solid #ddd;
+    }
+
+    .extension-name {
+      color: white;
+      font-weight: 600;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 14px;
+      display: inline-block;
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      margin-top: 25px;
+      flex-wrap: wrap;
+    }
+
+    .action-btn {
+      padding: 15px 25px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: all 0.3s ease;
+      font-size: 16px;
+      min-width: 150px;
+    }
+
+    .primary-btn {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    .secondary-btn {
+      background: rgba(102, 126, 234, 0.1);
+      color: var(--text);
+      border: 2px solid #667eea;
+    }
+
+    .primary-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+    }
+
+    .secondary-btn:hover {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+
+    .tips-section {
+      background: linear-gradient(135deg, #fff5f5 0%, #fef2f2 100%);
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+      border: 2px solid #fecaca;
+    }
+
+    .tips-section h4 {
+      color: #dc2626;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+
+    .tips-section ul {
+      text-align: left;
+      color: #7f1d1d;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .tips-section li {
+      margin-bottom: 8px;
+    }
+
+    .download-progress {
+      width: 100%;
+      height: 6px;
+      background: #e5e7eb;
+      border-radius: 3px;
+      overflow: hidden;
+      margin: 15px 0;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    @media (max-width: 768px) {
+      .modal-card {
+        padding: 30px 20px;
+        margin: 20px;
+      }
+      
+      .step-item {
+        padding: 12px;
+      }
+      
+      .action-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .action-btn {
+        width: 100%;
+        max-width: 250px;
+      }
+    }
+  </style>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+  <header>
+    <div class="logo">GanMa-Ai<span>.</span></div>
+    <nav></nav>
+    <div class="btns">
+      <!-- Google Sign-In -->
+      <div id="g_id_onload"
+           data-client_id="918035299335-ej332c4ks5l2rimoh29j4iivtnem2bpd.apps.googleusercontent.com"
+           data-context="signin"
+           data-ux_mode="popup"
+           data-callback="handleGoogleLogin"
+           data-auto_prompt="false">
+      </div>
+      <div class="g_id_signin"
+           data-type="standard"
+           data-shape="pill"
+           data-theme="outline"
+           data-text="sign_in_with"
+           data-size="large"
+           data-logo_alignment="left">
+      </div>
+    </div>
+    <div id="user-info" style="display:none; align-items: center; gap: 10px;">
+      <img id="user-pic" src="" alt="User Pic" style="width:40px; height:40px; border-radius:50%;">
+      <span id="user-name" style="font-weight: 600;"></span>
+      <button onclick="signOut()" style="margin-left: 10px; padding: 5px 10px;">Sign Out</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1>All-in-One AI Suite for Smarter Marketing & Business Decisions</h1>
+    <p>GanMa-Ai empowers you with cutting-edge tools—from market analysis and content generation to SEO, compliance, and bias detection—so you can optimize your strategy, automate workflows, and stay ahead effortlessly.</p>
+    <div class="cta-buttons">
+      <a href="#" class="trial-btn" onclick="handleDownloadClick('extension')">GET EXTENSION</a>
+      <a href="#" class="start-btn-purple" onclick="handleDownloadClick('exe')">GET .EXE</a>
+    </div>
+  </section>
+
+  <div class="logos">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft">
+  </div>
+
+  <section class="section">
+    <h2>Our agent offers a comprehensive suite of powerful features tailored to meet all your essential needs.</h2>
+    <div class="features-grid">
+      <div class="feature" data-chat="Chat-Bot">
+        <h3>Chat‑Bot</h3>
+        <p>Understand customer sentiment and extract meaningful patterns from feedback.</p>
+      </div>
+      <div class="feature" data-chat="Market Analysis">
+        <h3>Market Analysis</h3>
+        <p>Visualize market trends and make informed business decisions using AI-powered data insights.</p>
+      </div>
+      <div class="feature" data-chat="Text-to-Image">
+        <h3>Text‑to‑Image</h3>
+        <p>Generate stunning visuals from text prompts with advanced generative AI models.</p>
+      </div>
+      <div class="feature" data-chat="Ethical AI Score">
+        <h3>Ethical AI Score</h3>
+        <p>Evaluate your AI systems against fairness, transparency, and bias mitigation benchmarks.</p>
+      </div>
+      <div class="feature" data-chat="Content Generation">
+        <h3>Content Generation</h3>
+        <p>Create engaging content for blogs, ads, and campaigns in seconds using AI.</p>
+      </div>
+      <div class="feature" data-chat="SEO Optimizer">
+        <h3>SEO Optimizer</h3>
+        <p>Boost visibility and search rankings with real-time SEO recommendations.</p>
+      </div>
+      <div class="feature" data-chat="Social Media">
+        <h3>Social Media</h3>
+        <p>Plan, schedule, and track social media campaigns across all major platforms.</p>
+      </div>
+      <div class="feature" data-chat="Email Marketing">
+        <h3>Email Marketing</h3>
+        <p>Craft personalized email campaigns with AI-optimized subject lines and copy.</p>
+      </div>
+      <div class="feature" data-chat="Sentiment">
+        <h3>Sentiment</h3>
+        <p>Analyze emotions and tone in customer interactions to improve communication.</p>
+      </div>
+      <div class="feature" data-chat="AI-Call-Bot">
+        <h3>AI Call‑Bot</h3>
+        <p>Interactive voice bot asks your preset questions, records your answers live, and exports a polished PDF transcript.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Login Modal -->
+  <div id="login-modal" class="modal-overlay">
+    <div class="modal-card">
+      <button class="close-btn" onclick="closeLoginModal()">&times;</button>
+      <h2>🔐 Sign In Required</h2>
+      <p>Please sign in to download our tools and access exclusive features.</p>
+      <div class="google-signin-wrapper">
+        <div id="modal-google-signin"
+             class="g_id_signin"
+             data-type="standard"
+             data-shape="pill"
+             data-theme="outline"
+             data-text="sign_in_with"
+             data-size="large"
+             data-logo_alignment="left">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Enhanced Extension Installation Modal -->
+  <div id="install-modal" class="modal-overlay">
+    <div class="modal-card">
+      <button class="close-btn" onclick="closeInstallModal()">&times;</button>
+      <h2>🚀 Installation Guide</h2>
+      <p>Your <span class="extension-name">GanMa-Ai</span> extension is ready to install!</p>
+      
+      <div class="download-progress">
+        <div class="progress-bar" id="progress-bar"></div>
+      </div>
+      
+      <div class="install-steps">
+        <h3>📋 Follow these steps:</h3>
+        
+        <div class="step-item">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h4>📁 Extract ZIP File</h4>
+            <p>Right-click the downloaded <span class="code-snippet">ganma-ai-extension.zip</span> and select "Extract All" or "Extract Here"</p>
+          </div>
+        </div>
+        
+        <div class="step-item">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h4>🌐 Open Chrome Extensions</h4>
+            <p>Type <span class="code-snippet">chrome://extensions/</span> in your address bar or click the button below</p>
+          </div>
+        </div>
+        
+        <div class="step-item">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h4>⚙️ Enable Developer Mode</h4>
+            <p>Toggle the "Developer mode" switch in the top-right corner of the extensions page</p>
+          </div>
+        </div>
+        
+        <div class="step-item">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h4>📂 Load Extension</h4>
+            <p>Click "Load unpacked" and select the extracted <strong>GanMa-Ai</strong> folder</p>
+          </div>
+        </div>
+        
+        <div class="step-item">
+          <div class="step-number">5</div>
+          <div class="step-content">
+            <h4>🎉 Ready to Use!</h4>
+            <p>The extension appears in your toolbar - you can now start using all GanMa-Ai features!</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tips-section">
+        <h4>💡 Quick Tips:</h4>
+        <ul>
+          <li>• Make sure the extracted folder contains <span class="code-snippet">manifest.json</span></li>
+          <li>• If you see errors, double-check that Developer mode is enabled</li>
+          <li>• Pin the extension to your toolbar for easy access</li>
+          <li>• Need help? Contact support at maheshbabur.mca24@rvce.edu.in</li>
+        </ul>
+      </div>
+
+      <div class="action-buttons">
+        <button class="action-btn secondary-btn" onclick="closeInstallModal()">
+          ✅ Got It!
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 GanMa-Ai. All rights reserved. | Product | Company | Community
+  </footer>
+
+  <script>
+    let pendingDownload = null;
+
+    function handleGoogleLogin(response) {
+      const token = response.credential;
+      const userInfo = JSON.parse(atob(token.split('.')[1]));
+
+      // Show user info
+      document.getElementById("user-info").style.display = "flex";
+      document.getElementById("user-pic").src = userInfo.picture;
+      document.getElementById("user-name").textContent = userInfo.name;
+
+      // Hide login buttons
+      document.querySelector(".g_id_signin").style.display = "none";
+
+      // Store user info
+      sessionStorage.setItem("user", JSON.stringify(userInfo));
+
+      // Close modal if open
+      closeLoginModal();
+
+      // Trigger pending download if any
+      if (pendingDownload) {
+        startDownload(pendingDownload);
+        pendingDownload = null;
+      }
+    }
+
+    function signOut() {
+      // Clear storage
+      sessionStorage.removeItem("user");
+
+      // Google logout
+      google.accounts.id.disableAutoSelect();
+
+      // Show login button again
+      document.querySelector(".g_id_signin").style.display = "block";
+      document.getElementById("user-info").style.display = "none";
+    }
+
+    function isUserLoggedIn() {
+      return sessionStorage.getItem("user") !== null;
+    }
+
+    function handleDownloadClick(type) {
+      if (isUserLoggedIn()) {
+        startDownload(type);
+      } else {
+        pendingDownload = type;
+        showLoginModal();
+      }
+    }
+
+    function startDownload(type) {
+      if (type === 'extension') {
+        // Show installation modal first
+        showInstallModal();
+        
+        // Animate progress bar
+        animateProgressBar();
+        
+        // Create download link for extension
+        setTimeout(() => {
+          const link = document.createElement('a');
+          link.href = 'ganma-ai-extension.zip';
+          link.download = 'ganma-ai-extension.zip';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        }, 1000);
+        
+     } else if (type === 'exe') {
+  // Show coming soon modal
+  showComingSoonModal();
+}
+    }
+
+    function animateProgressBar() {
+      const progressBar = document.getElementById('progress-bar');
+      let width = 0;
+      const interval = setInterval(() => {
+        width += 2;
+        progressBar.style.width = width + '%';
+        if (width >= 100) {
+          clearInterval(interval);
+        }
+      }, 30);
+    }
+
+    function showInstallModal() {
+      const modal = document.getElementById('install-modal');
+      modal.classList.add('active');
+      
+      // Reset progress bar
+      document.getElementById('progress-bar').style.width = '0%';
+    }
+
+    function closeInstallModal() {
+      const modal = document.getElementById('install-modal');
+      modal.classList.remove('active');
+    }
+
+    function openExtensionsPage() {
+      // Try to open Chrome extensions page
+      try {
+        window.open('chrome://extensions/', '_blank');
+      } catch (e) {
+        // Fallback for browsers that don't support chrome:// URLs
+        alert('Please manually navigate to chrome://extensions/ in your browser address bar');
+      }
+    }
+
+    function showLoginModal() {
+      const modal = document.getElementById('login-modal');
+      modal.classList.add('active');
+      
+      // Re-render Google Sign-In button in modal
+      google.accounts.id.renderButton(
+        document.getElementById("modal-google-signin"),
+        {
+          type: "standard",
+          shape: "pill",
+          theme: "outline",
+          text: "sign_in_with",
+          size: "large",
+          logo_alignment: "left"
+        }
+      );
+    }
+
+    function closeLoginModal() {
+      const modal = document.getElementById('login-modal');
+      modal.classList.remove('active');
+      pendingDownload = null;
+    }
+
+function showComingSoonModal() {
+  const modal = document.createElement('div');
+  modal.className = 'modal-overlay active';
+  modal.innerHTML = `
+    <div class="modal-card">
+      <button class="close-btn" onclick="closeComingSoonModal()">&times;</button>
+      <h2>🚧 Coming Soon</h2>
+      <p>Our desktop application is currently under development and will be available soon!</p>
+      
+      <div class="tips-section">
+        <h4>🔔 Get Notified:</h4>
+        <ul>
+          <li> Follow us for updates on the desktop app release</li>
+          <li> In the meantime, try our Chrome extension for full functionality</li>
+          <li> Expected release: Q2 2025</li>
+        </ul>
+      </div>
+
+      <div class="action-buttons">
+        <button class="action-btn primary-btn" onclick="handleDownloadClick('extension')">
+          🔗 Get Extension Instead
+        </button>
+        <button class="action-btn secondary-btn" onclick="closeComingSoonModal()">
+          ✅ Got It!
+        </button>
+      </div>
+    </div>
+  `;
+  
+  document.body.appendChild(modal);
+  
+  // Close on outside click
+  modal.addEventListener('click', function(e) {
+    if (e.target === modal) {
+      closeComingSoonModal();
+    }
+  });
+}
+
+function closeComingSoonModal() {
+  const modal = document.querySelector('.modal-overlay:last-child');
+  if (modal) {
+    modal.remove();
+  }
+}
+    // Close modal when clicking outside
+    document.getElementById('login-modal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeLoginModal();
+      }
+    });
+
+    document.getElementById('install-modal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeInstallModal();
+      }
+    });
+
+    // Google OAuth Configuration
+    function initializeGoogleAuth() {
+      // Remove any hash from URL for OAuth compatibility
+      if (window.location.hash) {
+        window.history.replaceState({}, document.title, window.location.pathname);
+      }
+      
+      // Initialize Google OAuth
+      google.accounts.id.initialize({
+        client_id: "918035299335-ej332c4ks5l2rimoh29j4iivtnem2bpd.apps.googleusercontent.com",
+        callback: handleGoogleLogin,
+        auto_prompt: false
+      });
+    }
+
+    // Auto-login if already signed in
+    window.onload = () => {
+      // Initialize Google Auth when page loads
+      if (typeof google !== 'undefined') {
+        initializeGoogleAuth();
+      }
+      
+      const savedUser = sessionStorage.getItem("user");
+      if (savedUser) {
+        const userInfo = JSON.parse(savedUser);
+        document.getElementById("user-info").style.display = "flex";
+        document.getElementById("user-pic").src = userInfo.picture;
+        document.getElementById("user-name").textContent = userInfo.name;
+        document.querySelector(".g_id_signin").style.display = "none";
+      }
+    };
+
+    // Test function for development
+    function simulateLogin() {
+      const testUser = {
+        name: "Test User",
+        picture: "https://via.placeholder.com/40"
+      };
+      
+      document.getElementById("user-info").style.display = "flex";
+      document.getElementById("user-pic").src = testUser.picture;
+      document.getElementById("user-name").textContent = testUser.name;
+      document.querySelector(".g_id_signin").style.display = "none";
+      
+      sessionStorage.setItem("user", JSON.stringify(testUser));
+      closeLoginModal();
+      
+      if (pendingDownload) {
+        startDownload(pendingDownload);
+        pendingDownload = null;
+      }
+    }
+  </script>
+</body>
+</html>
