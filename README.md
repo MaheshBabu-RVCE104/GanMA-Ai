@@ -96,7 +96,7 @@ GanMA-Ai-main/
 
 ---
 
-## 📸 Interface in the Browser with Enterprise DB Read Permission
+## 📸 Interface in the Browser with Enterprise DB Read Permission with which a perfect E-mail is generated to send it to the user
 
 <p align="center">
   <img src="UI.png" alt="Extension Icon"/>
