@@ -128,4 +128,3 @@ This project is provided for educational and hackathon purposes.
 <p align="center">
   <img src="GanMa-logo.png" alt="GanMA-Ai Logo" width="800"/>
 </p>
-```
