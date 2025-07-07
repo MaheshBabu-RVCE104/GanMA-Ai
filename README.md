@@ -7,7 +7,7 @@
 
 **Epsilon Campus Hackathon '25 Submission**
 ---
-Live Website : GanMa AI Website
+**Live Demo:** [GanMa AI Website](https://ganma-ai-website.onrender.com/)
 ---
 
 ## 📹 [Watch the Full Demo & Setup Video 
