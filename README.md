@@ -77,9 +77,16 @@ GanMA-Ai-main/
 
 4. **Using the Extension**
 
-   * Navigate to any webpage; the AI Sidebar will automatically appear.
-   * Click sidebar icons to access Market Analysis, Feedback Analysis, Text-to-Image, and Ethical AI features.
-   * Click the user icon to log in or sign up.
+ • Analyze markets to spot trends and opportunities.
+ • Summarize customer feedback so you know exactly what people love (or don’t).
+ • Generate on‑ brand images for ads or social posts.
+ • Write newsletters, emails, social‑ media posts, or WhatsApp messages in seconds.
+ • Optimize content for SEO so it ranks higher on Google.
+ • Check sentiment on any text to see if it’s positive, negative, or neutral.
+ • Convert and process media files without leaving the browser.
+ • Record calls or audio sessions and automatically save transcripts or key data as a PDF on 
+   your local system—just like having a call‑ bot built into your browser.
+
 
 5. **Backend/API**
 
