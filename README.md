@@ -9,7 +9,7 @@
 
 ---
 
-**Live Demo:** [View Live Extension](https://ganma-ai-website.onrender.com/) *(click me)*  
+**Live Website Link:** [View Live Extension](https://ganma-ai-website.onrender.com/) *(click me)*  
 **Demo Video:** [Watch Full Demo & Setup](https://drive.google.com/file/d/1f7QCfv78kirarrqcdw6QlEjBUvu3Lt_O/view?usp=drive_link) *(click me)*  
 **Alternate Demo (6 min):** [Watch Alternate Video](https://drive.google.com/file/d/1Gpd4uobP885iZolYPyujoKr7lo2Hk7-Y/view?usp=drive_link) *(click me)*
 
