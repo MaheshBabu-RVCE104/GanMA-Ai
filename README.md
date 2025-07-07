@@ -91,7 +91,7 @@ GanMA-Ai-main/
 ## 📸 CHAT Interface
 
 <p align="center">
-  <img src="chat-window.png" alt="Extension Icon" width="120"/>
+  <img src="chat-window.png" alt="Extension Icon"/>
 </p>
 
 ---
@@ -99,7 +99,7 @@ GanMA-Ai-main/
 ## 📸 Interface in the Browser with Enterprise DB Read Permission
 
 <p align="center">
-  <img src="UI.png" alt="Extension Icon" width="120"/>
+  <img src="UI.png" alt="Extension Icon"/>
 </p>
 
 ---
@@ -107,7 +107,7 @@ GanMA-Ai-main/
 ## 📸 Call Bot Used By Agent Generate Customer Data in .json format
 
 <p align="center">
-  <img src="call-bot.png" alt="Extension Icon" width="120"/>
+  <img src="call-bot.png" alt="Extension Icon"/>
 </p>
 
 ---
