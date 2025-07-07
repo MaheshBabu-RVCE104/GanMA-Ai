@@ -88,10 +88,26 @@ GanMA-Ai-main/
 
 ---
 
-## 📸 Screenshots
+## 📸 CHAT Interface
 
 <p align="center">
-  <img src="extension_logo.png" alt="Extension Icon" width="120"/>
+  <img src="chat-window.png" alt="Extension Icon" width="120"/>
+</p>
+
+---
+
+## 📸 Interface in the Browser with Enterprise DB Read Permission
+
+<p align="center">
+  <img src="UI.png" alt="Extension Icon" width="120"/>
+</p>
+
+---
+
+## 📸 Call Bot Used By Agent Generate Customer Data in .json format
+
+<p align="center">
+  <img src="call-bot.png" alt="Extension Icon" width="120"/>
 </p>
 
 ---
