@@ -1,4 +1,3 @@
-````markdown
 <!-- Banner Image -->
 <p align="center">
   <img src="Picture1.png" alt="GanMA-Ai Banner" width="800"/>
