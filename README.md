@@ -1,6 +1,6 @@
 <!-- Banner Image -->
 <p align="center">
-  <img src="Picture1.png" alt="GanMA-Ai Banner" width="800"/>
+  <img src="GanMa-logo.png" alt="GanMA-Ai Banner" width="800"/>
 </p>
 
 # GanMA-Ai: AI Sidebar Taskbar Extension
@@ -125,13 +125,5 @@ This project is provided for educational and hackathon purposes.
 
 ---
 
-## 🙏 Acknowledgements
 
-* Epsilon Campus Hackathon '25
-* All contributors and mentors
 
----
-
-<p align="center">
-  <img src="GanMa-logo.png" alt="GanMA-Ai Logo" width="800"/>
-</p>
